@@ -1,0 +1,27 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Text Stats API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kishore564/kp.git"
+  },
+  "author": "kishore Panduri\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[K",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kishore564/kp/issues"
+  },
+  "homepage": "https://github.com/kishore564/kp#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.1.7-alpha.2",
+    "lodash": "^4.17.15",
+    "morgan": "^1.10.0"
+  }
+}
