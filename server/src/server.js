@@ -35,12 +35,15 @@ app.post('/upload', async (req, res) => {
                 message: 'No file uploaded'
             });
         } else {
-            //Use the name of the input field (i.e. "avatar") to retrieve the uploaded file
-            let textFile = req.files.textFile;
             
-            //Use the mv() method to place the file in upload directory (i.e. "uploads")
-            textFile.mv('./uploads/' + textFile.name);
+            let textFile = req.files.textFile;
+            //Read text file data
+            let data=textFile.data.toString('utf8');
+            
+            // Number of words in text file.
+            let noOfWords=data.split(" ").length;
 
+            
             //send response
             res.send({
                 status: true,
@@ -48,7 +51,8 @@ app.post('/upload', async (req, res) => {
                 data: {
                     name: textFile.name,
                     mimetype: textFile.mimetype,
-                    size: textFile.size
+                    size: textFile.size,
+                    noOfWords:noOfWords
                 }
             });
         }
