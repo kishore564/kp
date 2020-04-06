@@ -5,14 +5,17 @@
 * git clone https://github.com/kishore564/kp.git
 * cd KP
 
-* To Start Server [Link](http://localhost:8005/upload) 
+* To Start Server  
 * cd server ; npm install ; npm run start
 
-* To Start UI [Link](http://localhost:3000/) 
+* To Start UI 
 * cd ui ; npm install; npm run start
 
 * To Test
 * cd ui; npm run test
+
+* Server Endpoint [http://localhost:8005/upload](http://localhost:8005/upload)
+* UI Endpoint [http://localhost:3000/](http://localhost:3000/)
 
 Upload text file using the UI to see the text stats.
 
