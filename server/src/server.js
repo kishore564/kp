@@ -44,9 +44,12 @@ app.post('/upload', async (req, res) => {
             let noOfWords=data.split(" ").length;
 
             // Number of letters in text file.
-            let rx = /[a-z]/gi;
-            let noOfLetters = data.match(rx) ? data.match(rx).length:0; 
-
+            let rxLetters = /[a-z]/gi;
+            let noOfLetters = data.match(rxLetters) ? data.match(rxLetters).length:0; 
+           
+            //Number of symbols in text file.
+            let rxSymbols = /[^\w\s]/g;
+            let noOfSymbols = data.match(rxSymbols) ? data.match(rxSymbols).length:0; 
 
             //send response
             res.send({
@@ -57,7 +60,7 @@ app.post('/upload', async (req, res) => {
                     mimetype: textFile.mimetype,
                     size: textFile.size,
                     noOfWords:noOfWords,
-                    noOfLetters:noOfLetters
+                    noOfSymbols:noOfSymbols
                 }
             });
         }
