@@ -43,7 +43,11 @@ app.post('/upload', async (req, res) => {
             // Number of words in text file.
             let noOfWords=data.split(" ").length;
 
-            
+            // Number of letters in text file.
+            let rx = /[a-z]/gi;
+            let noOfLetters = data.match(rx) ? data.match(rx).length:0; 
+
+
             //send response
             res.send({
                 status: true,
@@ -52,7 +56,8 @@ app.post('/upload', async (req, res) => {
                     name: textFile.name,
                     mimetype: textFile.mimetype,
                     size: textFile.size,
-                    noOfWords:noOfWords
+                    noOfWords:noOfWords,
+                    noOfLetters:noOfLetters
                 }
             });
         }
