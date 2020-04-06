@@ -43,6 +43,21 @@ function getTopWords(data, cutOff) {
     // Return top cutOff=3 common words 
     return words.sort(function (a,b) { return frequencies[b] -frequencies[a];}).slice(0,cutOff).toString();
   }
+
+  function getTopLetters(data, cutOff) {          
+    let letters = data,
+     frequencies = {},
+     letter, i;     
+    // Build map with letters and their frequencies 
+    for( i=0; i<letters.length; i++ ) {
+        letter = letters[i];
+      frequencies[letter] = frequencies[letter] || 0;
+      frequencies[letter]++;
+    }
+    letters = Object.keys( frequencies );
+    // Return top cutOff=3 common letters 
+    return letters.sort(function (a,b) { return frequencies[b] -frequencies[a];}).slice(0,cutOff).toString();
+  }
   
 
 // Upload text file
@@ -72,7 +87,11 @@ app.post('/upload', async (req, res) => {
             let noOfSymbols = data.match(rxSymbols) ? data.match(rxSymbols).length:0; 
 
             //Top three most common words             
-            let topWords = getTopWords( data, 3);
+            let topWords = getTopWords( data, 3);      
+                                 
+            //Top three most common letters
+            let topLetters = getTopLetters( data.match(rxLetters), 3); 
+            
 
             //send response
             res.send({
@@ -81,8 +100,10 @@ app.post('/upload', async (req, res) => {
                 data: {
                     name: textFile.name,                    
                     noOfWords:noOfWords,
+                    noOfLetters:noOfLetters,
                     noOfSymbols:noOfSymbols,
-                    topWords:topWords
+                    topWords:topWords,
+                    topLetters:topLetters
                 }
             });
         }
